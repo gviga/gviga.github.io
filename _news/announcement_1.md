@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2025-08-10
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement.
+Our paper 'NAM: Neural Adjoint Maps for refining shape correspondences' with Maks Ovsjanikov and Simone Melzi has been accepted to SIGGRAPH (Journal track).
