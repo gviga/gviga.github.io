@@ -42,4 +42,5 @@ Previously, I earned a Master’s degree in *Applied Mathematics* with honors an
 - Shape Correspondence
 - Computer Graphics
 - 3D Vision
+
 ---
