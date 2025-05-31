@@ -38,19 +38,7 @@ Previously, I earned a Master’s degree in *Applied Mathematics* with honors an
 
 ### Research Interests
 - Geometric Deep Learning
-- Shape Correspondence & Representation Learning
+- Shape Correspondence
 - Computer Graphics
-- Functional Maps
 - 3D Vision
-
-### Collaborations
-I have had the opportunity to collaborate with teams from:
-- Università di Genova  
-- École Polytechnique de Paris  
-- University of California, Santa Barbara (UCSB)
-
-### Awards
-- 🏆 *Stag2023 Best MS Thesis Award in Graphics* (by Italian Eurographics community)
 ---
-
-
