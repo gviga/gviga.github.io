@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
-        },{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-accepted-to-siggraph-journal-track",
+        },{id: "post-abstraction-on-basis",
+        
+          title: "Abstraction On Basis",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/abstraction-on-basis/";
+          
+        },
+      },{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-accepted-to-siggraph-journal-track",
           title: 'Our paper ‘NAM: Neural Adjoint Maps for refining shape correspondences’ with Maks Ovsjanikov...',
           description: "",
           section: "News",},{
