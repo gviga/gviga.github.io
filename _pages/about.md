@@ -41,6 +41,5 @@ Previously, I earned a Master’s degree in *Applied Mathematics* with honors an
 - Geometric Deep Learning
 - Shape Correspondence
 - Computer Graphics
-- 3D Vision
 
 ---
