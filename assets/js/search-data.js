@@ -435,10 +435,7 @@ ninja.data = [{
             window.location.href = "/blog/2015/formatting-and-links/";
           
         },
-      },{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
-          description: "",
-          section: "News",},{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-accepted-to-siggraph-journal-track",
+      },{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-accepted-to-siggraph-journal-track",
           title: 'Our paper ‘NAM: Neural Adjoint Maps for refining shape correspondences’ with Maks Ovsjanikov...',
           description: "",
           section: "News",},{id: "projects-project-1",
