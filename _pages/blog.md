@@ -18,7 +18,7 @@ pagination:
   <div class="header-bar">
     <h1>Blog</h1>
     <h2 style="font-weight: normal;">
-      Musings on machine learning abstractions through the lens of someone who never learned ML in a structured way.
+      Random thoughts of a researcher in machine learning with an interest in abstractions.
     </h2>
   </div>
 
