@@ -8,7 +8,8 @@ subtitle: >
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: ![Screenshot_2024-10-02-15-05-30-564_com whatsapp](https://github.com/user-attachments/assets/436ba0b5-d6dd-4b52-8c59-20538800ca25)
+
   image_circular: true
   more_info: >
     <p>University of Milano-Bicocca</p>
