@@ -1,9 +1,9 @@
 ---
 layout: default
 permalink: /blog/
-title: Digital Garden
+title: digital garden
 nav: true
-nav_order: 1
+nav_order: 2
 pagination:
   enabled: true
   collection: posts
