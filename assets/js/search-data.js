@@ -23,15 +23,15 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-abstraction-on-basis",
+        },{id: "post-useful-tools-for-machine-learning-on-geometric-data",
         
-          title: "Abstraction On Basis",
+          title: "Useful Tools for Machine Learning on Geometric Data",
         
-        description: "",
+        description: "A curated list of open-source libraries for machine learning on 3D data, based on my experience as a geometry processing researcher.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/abstraction-on-basis/";
+            window.location.href = "/blog/2025/tools_for_ml_on_geometric_data/";
           
         },
       },{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-published-in-acm-transactions-on-graphics-currently-in-vancouver-at-siggraph-2025-presenting-our-work",
