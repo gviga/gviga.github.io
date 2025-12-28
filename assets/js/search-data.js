@@ -48,8 +48,14 @@ ninja.data = [{
             window.location.href = "/blog/2025/abstraction-on-basis/";
           
         },
-      },{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-accepted-to-siggraph-journal-track",
-          title: 'Our paper ‘NAM: Neural Adjoint Maps for refining shape correspondences’ with Maks Ovsjanikov...',
+      },{id: "news-our-paper-nam-neural-adjoint-maps-for-refining-shape-correspondences-with-maks-ovsjanikov-and-simone-melzi-has-been-published-in-acm-transactions-on-graphics-currently-in-vancouver-at-siggraph-2025-presenting-our-work",
+          title: '🎉 Our paper NAM: Neural Adjoint Maps for refining shape correspondences (with Maks...',
+          description: "",
+          section: "News",},{id: "news-excited-to-announce-the-release-of-geomfum-a-new-library-for-machine-learning-with-functional-maps-check-it-out-on-https-github-com-3diglab-geomfum",
+          title: '📚 Excited to announce the release of GeomFum, a new library for machine...',
+          description: "",
+          section: "News",},{id: "news-thrilled-to-join-école-polytechnique-as-a-visiting-phd-student-working-with-maks-ovsjanikov",
+          title: '🇫🇷 Thrilled to join École Polytechnique as a Visiting PhD Student, working with...',
           description: "",
           section: "News",},{
         id: 'social-email',
