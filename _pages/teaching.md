@@ -3,7 +3,7 @@ layout: page
 permalink: /teaching/
 title: teaching
 description: Teaching-related materials and experiences.
-nav: true
+nav: false
 nav_order: 6
 ---
 
