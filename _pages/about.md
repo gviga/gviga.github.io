@@ -1,20 +1,14 @@
 ---
-layout: about
-title: about
+layout: About
+title: About
 permalink: /
 subtitle: >
-  <a href='https://www.unimib.it/'>PhD @ University of Milano-Bicocca</a>. 
-  Milan, Italy. Computer Science. Geometry. Machine Learning.
-
+  <a href='https://www.unimib.it/'>PhD @ University of Milano-Bicocca</a>. Currently visiting <a href='https://www.lix.polytechnique.fr/'>LiX @ École Polytechnique</a>
 profile:
   align: right
   image: personal.jpg
-
   image_circular: true
   more_info: >
-    <p>University of Milano-Bicocca</p>
-    <p>Computer Science Department</p>
-    <p>Milan, Italy</p>
     <p>Email: <a href="mailto:giulio.vigan@gmail.com">giulio.vigan@gmail.com</a></p>
 
 selected_papers: true
@@ -31,15 +25,15 @@ latest_posts:
   limit: 3
 ---
 
-I am a PhD researcher in Computer Science at the [University of Milano-Bicocca](https://www.unimib.it/), working at the intersection of **machine learning**, **geometric data processing**, and **computer graphics**. 
+I am a PhD researcher in Computer Science at the [University of Milano-Bicocca](https://www.unimib.it/), working at the intersection of **machine learning** and **geometry processing**.
 
-My work focuses on developing neural architectures to understand and model maps between 3D shapes. I am passionate about leveraging artificial intelligence to enhance computational reasoning in geometry. 
+My research focuses on developing neural architectures to understand and model correspondences between 3D shapes. I am passionate about leveraging artificial intelligence to enhance computational reasoning in geometry. Currently, I am visiting [LiX](https://www.lix.polytechnique.fr/) at École Polytechnique near Paris, where I explore how geometric reasoning can advance our understanding of neural architectures.
 
-Previously, I earned a Master’s degree in *Applied Mathematics* with honors and a Bachelor’s degree in *Mathematics* from the University of Milan. During my studies, I spent an exchange semester at the University of Twente.
+Previously, I earned a Master's degree in *Applied Mathematics* from the University of Milan.
+
+When I'm not working, you'll find me at the bar discussing politics but also enjoying the essentials of Italian life: food and footbal.
 
 ### Research Interests
 - Geometric Deep Learning
-- Shape Correspondence
-- Computer Graphics
-
----
+- Spectral Geometry
+- Machine Learning

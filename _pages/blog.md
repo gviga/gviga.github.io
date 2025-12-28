@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /blog/
-title: digital garden
+title: DigitalGarden
 nav: true
 nav_order: 2
 pagination:
@@ -16,9 +16,9 @@ pagination:
 <div class="post">
 
   <div class="header-bar">
-    <h1>Blog</h1>
+    <h1>Digital Garden</h1>
     <h2 style="font-weight: normal;">
-      Random thoughts of a researcher in machine learning with an interest in abstractions.
+      Random thoughts of a matematician working in machine learning.
     </h2>
   </div>
 

@@ -19,8 +19,6 @@ nav_order: 2
   </a>
   </p>
 </div>
-<!-- Bibsearch Feature -->
-{% include bib_search.liquid %}
 
 <!-- Year Grouping Option -->
 {% bibliography --group_by year --group_order descending %}
