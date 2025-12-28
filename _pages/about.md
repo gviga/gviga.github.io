@@ -37,5 +37,3 @@ When I'm not working, you'll find me at the bar discussing politics but also enj
 - Geometric Deep Learning
 - Spectral Geometry
 - Machine Learning
-
----
