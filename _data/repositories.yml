@@ -4,5 +4,5 @@ repo_description_lines_max: 2
 
 github_repos:
   - gviga/AB_ZoomOut
-  - givga/NAM-NeuralAdjointMaps
-  - luispereira/geomfum
+  - gviga/NAM-NeuralAdjointMaps
+  - 3diglab/geomfum

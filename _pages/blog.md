@@ -18,8 +18,11 @@ pagination:
   <div class="header-bar">
     <h1>Digital Garden</h1>
     <h2 style="font-weight: normal;">
-      Random thoughts of a matematician working in machine learning.
+      Random thoughts of a mathematician working in machine learning.
     </h2>
+    <p class="garden-description">
+      Welcome to my digital garden—a space for cultivating ideas in progress. Unlike a traditional blog, this is where I plant seeds of thought that may grow, evolve, or remain incomplete. Expect rough drafts, half-formed concepts, and works-in-progress as I explore connections between geometry, machine learning, and beyond.
+    </p>
   </div>
 
   <ul class="post-list">
@@ -47,4 +50,3 @@ pagination:
     {% include pagination.liquid %}
   {% endif %}
 </div>
-
