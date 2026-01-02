@@ -18,10 +18,13 @@ pagination:
   <div class="header-bar">
     <h1>Digital Garden</h1>
     <h2 style="font-weight: normal;">
-      Random thoughts of a mathematician working in machine learning.
+      Random thoughts on things.
     </h2>
     <p class="garden-description">
-      Welcome to my digital garden—a space for cultivating ideas in progress. Unlike a traditional blog, this is where I plant seeds of thought that may grow, evolve, or remain incomplete. Expect rough drafts, half-formed concepts, and works-in-progress as I explore connections between geometry, machine learning, and beyond.
+      Recently, I felt the urge to share thoughts and ideas on a variety of subjects and started exploring different ways to do so.Creating a blog seemed like the obvious first step; however, the pressure to publish well-curated and definitive posts felt like too much—especially for someone who already does that professionally through academic papers. Then I remembered the concept of a Digital Garden (https://joelhooks.com/digital-garden
+      ), and it immediately resonated with me. What I find most compelling is the idea that each post is created with the explicit intention of being revisited: changed, expanded, corrected, and improved over time. Rather than presenting finished conclusions, this space is meant to reflect ongoing thinking—ideas in progress rather than polished endpoints.
+
+    This garden is a place to grow thoughts slowly, imperfectly, and in public.
     </p>
   </div>
 
@@ -40,7 +43,7 @@ pagination:
       </h3>
       <p>{{ post.description }}</p>
       <p class="post-meta">
-        {{ read_time }} min read &middot; {{ post.date | date: '%B %d, %Y' }}
+        {{ read_time }} min read &middot;
       </p>
     </li>
     {% endfor %}
