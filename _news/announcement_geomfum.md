@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-📚 Excited to announce the release of **GeomFum**, a new library for machine learning with Functional Maps. Check it out on https://github.com/3diglab/geomfum.
+📚 We have released **GeomFum**, a new library for machine learning with Functional Maps! Check it out on https://github.com/3diglab/geomfum.

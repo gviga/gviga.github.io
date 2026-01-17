@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🇫🇷 Thrilled to join **École Polytechnique** as a Visiting PhD Student, working with Maks Ovsjanikov.
+🇫🇷 I joined **École Polytechnique** as a Visiting PhD Student, working with Maks Ovsjanikov.
