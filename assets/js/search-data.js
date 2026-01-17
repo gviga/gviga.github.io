@@ -23,7 +23,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-useful-tools-for-machine-learning-on-geometric-data",
+        },{id: "post-the-day-you-lose-power-is-the-day-you-need-rights",
+        
+          title: "The Day You Lose Power Is the Day You Need Rights",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/understanding_the_role-of_rights/";
+          
+        },
+      },{id: "post-humanity-s-next-bitter-lesson",
+        
+          title: "Humanity’s Next Bitter Lesson",
+        
+        description: "How the Bitter Lesson of AI scaling extends from algorithms to human trust, work, and social roles.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/humanity_bitter_lesson/";
+          
+        },
+      },{id: "post-useful-tools-for-machine-learning-on-geometric-data",
         
           title: "Useful Tools for Machine Learning on Geometric Data",
         
