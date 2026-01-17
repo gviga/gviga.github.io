@@ -10,7 +10,7 @@ featured: true
 
 Recently, I was talking with a colleague who works in industry about open-source libraries for machine learning on 3D data. It made me realize how often it's not that easy to find good, practical resources in this niche.
 
-For this reason, I thought about sharing my personal experience with some libraries that I've found useful. Of course, everyone faces different problems and tasks, so my observations are quite specific—it would be great to hear about other people's experiences and opinions!
+For this reason, I thought about sharing my personal experience with some libraries that I've found useful. Of course, everyone faces different problems and tasks, so my observations are quite specific, and can change over the time depending on what i'm working on.
 
 ## Libraries I Actively Use
 
@@ -22,7 +22,7 @@ Here's a list of libraries I've used (or explored) for machine learning on 3D da
 
 - **[PyTorch3D](https://pytorch3d.org/)**: Not the easiest to install, but some routines can only be found here. Essential for differentiable rendering and 3D operations.
 
-- **[Potpourri3D](https://github.com/nmwsharp/potpourri3d)**: Excellent for geodesics and geometry processing. My go-to for distance computations on meshes.
+- **[Potpourri3D](https://github.com/nmwsharp/potpourri3d)**: Excellent for geodesics and geometry processing. My go-to for distance computations on 3D meshes.
 
 - **[LibIGL](https://libigl.github.io/)**: A reliable choice for basic geometry processing routines. The Python bindings make it very accessible.
 
@@ -49,9 +49,6 @@ Other libraries I haven't used extensively but that might be valuable depending 
 ## Final Thoughts
 
 This list reflects only my own experience from the projects I've worked on in recent years. The landscape of tools for geometric machine learning is constantly evolving, and I'd love to hear about the tools or frameworks that others find most effective.
-
-What libraries do you use for your geometric deep learning projects? Let me know if I'm missing something essential!
-
 ---
 
 *This is a living document in my digital garden—I'll update it as I discover new tools or gain more experience with existing ones.*
