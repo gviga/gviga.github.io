@@ -21,8 +21,8 @@ pagination:
       Random thoughts on things.
     </h2>
     <p class="garden-description">
-      Recently, I felt the urge to share thoughts and ideas on a variety of subjects and started exploring different ways to do so.Creating a blog seemed like the obvious first step; however, the pressure to publish well-curated and definitive posts felt like too much—especially for someone who already does that professionally through academic papers. Then I remembered the concept of a Digital Garden (https://joelhooks.com/digital-garden
-      ), and it immediately resonated with me. What I find most compelling is the idea that each post is created with the explicit intention of being revisited: changed, expanded, corrected, and improved over time. Rather than presenting finished conclusions, this space is meant to reflect ongoing thinking—ideas in progress rather than polished endpoints.
+      Recently, I felt the urge to share thoughts and ideas on a variety of subjects and started exploring different ways to do so. Creating a blog seemed like the obvious first step; however, the pressure to publish well-curated and definitive posts felt like too much—especially for someone who already does that professionally through academic papers. Then I remembered the concept of a Digital Garden (https://joelhooks.com/digital-garden
+      ), and it immediately resonated with me. What I find most compelling is the idea that each post is created with the explicit intention of being revisited: changed, expanded, corrected, and improved over time. Rather than presenting finished conclusions, this space is meant to reflect ongoing ideas rather than polished endpoints.
 
     This garden is a place to grow thoughts slowly, imperfectly, and in public.
     </p>
