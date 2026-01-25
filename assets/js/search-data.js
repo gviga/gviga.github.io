@@ -31,6 +31,17 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
+            window.location.href = "/blog/2026/ai_hallucinations/";
+          
+        },
+      },{id: "post-the-day-you-lose-power-is-the-day-you-need-rights",
+        
+          title: "The Day You Lose Power Is the Day You Need Rights",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
             window.location.href = "/blog/2026/understanding_the_role-of_rights/";
           
         },
