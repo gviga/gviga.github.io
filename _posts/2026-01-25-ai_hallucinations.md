@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Day You Lose Power Is the Day You Need Rights"
+title: "On Ai hallucinated Citations in Scientific research"
 date: 2026-01-17
 tags: [society]
 categories: [philosophy]
@@ -9,7 +9,7 @@ featured: true
 
 ![](/assets/img/ai-hallucination.png)
 
-
+# Why Hallucinated Citations Are Not an AI Failure
 
 In the last few days there has been extensive discussion about reports of hallucinated citations in accepted NeurIPS papers. Many reactions frame these cases as a catastrophic failure of the publication system, blaming irresponsible authors or presenting them as proof that AI is undermining scientific fairness.
 
