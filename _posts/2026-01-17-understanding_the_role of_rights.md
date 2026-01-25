@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Day You Lose Power Is the Day You Need Rights"
+title: "Renforcing the role of rights in 2026"
 date: 2026-01-17
 tags: [society]
 categories: [philosophy]
@@ -8,7 +8,7 @@ featured: true
 ---
 
 
-## Understanding the role of rights in 2026
+## Renforcing the role of rights in 2026
 
 The other day I watched a short video by Riccardo Vessa in which he talks about how rights are perceived in contemporary society, a time in which it often seems that no one truly cares about them, especially when it comes to international law.
 
