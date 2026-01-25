@@ -9,7 +9,7 @@ featured: true
 image: /assets/img/quarto-stato-ai.jpg
 ---
 
-![Teaser Image (Generated with Perplexity, form "Il Quarto Stato" by Giuseppe Pellizza Da Volpedo)](/assets/images/quarto-stato-ai.jpg)
+![Teaser Image (Generated with Perplexity, form "Il Quarto Stato" by Giuseppe Pellizza Da Volpedo)](/assets/img/quarto-stato-ai.jpg)
 
 
 ## Humanity’s Next Bitter Lesson
