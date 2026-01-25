@@ -23,20 +23,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-on-ai-hallucinated-citations-in-scientific-research",
+        },{id: "post-renforcing-the-role-of-rights-in-2026",
         
-          title: "On Ai hallucinated Citations in Scientific research",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2026/ai_hallucinations/";
-          
-        },
-      },{id: "post-the-day-you-lose-power-is-the-day-you-need-rights",
-        
-          title: "The Day You Lose Power Is the Day You Need Rights",
+          title: "Renforcing the role of rights in 2026",
         
         description: "",
         section: "Posts",
