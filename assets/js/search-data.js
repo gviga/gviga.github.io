@@ -23,9 +23,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-the-day-you-lose-power-is-the-day-you-need-rights",
+        },{id: "post-on-ai-hallucinated-citations-in-scientific-research",
         
-          title: "The Day You Lose Power Is the Day You Need Rights",
+          title: "On Ai hallucinated Citations in Scientific research",
         
         description: "",
         section: "Posts",
