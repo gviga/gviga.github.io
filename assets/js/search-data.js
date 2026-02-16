@@ -23,7 +23,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-renforcing-the-role-of-rights-in-2026",
+        },{id: "post-blog-attention-on-the-simplex",
+        
+          title: "Blog_attention_on_the_simplex",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/blog_attention_on_the_simplex/";
+          
+        },
+      },{id: "post-why-hallucinated-citations-are-not-an-ai-failure",
+        
+          title: "Why Hallucinated Citations Are Not an AI Failure",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai_hallucinations/";
+          
+        },
+      },{id: "post-renforcing-the-role-of-rights-in-2026",
         
           title: "Renforcing the role of rights in 2026",
         
