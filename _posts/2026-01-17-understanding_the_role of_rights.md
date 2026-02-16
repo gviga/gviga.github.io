@@ -4,7 +4,7 @@ title: "Renforcing the role of rights in 2026"
 date: 2026-01-17
 tags: [society]
 categories: [philosophy]
-featured: true
+featured: false
 ---
 
 

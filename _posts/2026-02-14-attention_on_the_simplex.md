@@ -4,10 +4,10 @@ title: "Attention on the Simplex"
 date: 2026-01-26
 tags: [ai]
 categories: [science, geometry]
-featured: false
+featured: True
 ---
 
-# Seeing Attention Through the Simplex: A Geometric Lens on Transformer Heads
+# Attention on the Simplex
 
 ## Introduction
 
