@@ -23,9 +23,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-blog-attention-on-the-simplex",
+        },{id: "post-attention-on-the-simplex",
         
-          title: "Blog_attention_on_the_simplex",
+          title: "Attention on the Simplex",
         
         description: "",
         section: "Posts",
