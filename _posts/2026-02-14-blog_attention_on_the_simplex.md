@@ -128,16 +128,16 @@ This is a common pattern in early layers of transformers: a combination of posit
 
 The interactive 3D visualizations below (generated with Plotly — drag to rotate, scroll to zoom, hover for details) show each polytope inside the tetrahedron:
 
-<iframe src="./figures/simplex_all_polytopes.html" width="100%" height="450" frameborder="0" style="border:none;"></iframe>
+<iframe src="figures/simplex_all_polytopes.html" width="100%" height="450" frameborder="0" style="border:none;"></iframe>
 
 Explore each archetype individually:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-<iframe src="./figures/simplex_sink_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="./figures/simplex_rank2_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="./figures/simplex_previoustoken_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="./figures/simplex_fullrank_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="./figures/simplex_sink_plus_diagonal.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="figures/simplex_sink_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="figures/simplex_rank2_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="figures/simplex_previoustoken_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="figures/simplex_fullrank_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="figures/simplex_sink_plus_diagonal.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
 </div>
 
 
