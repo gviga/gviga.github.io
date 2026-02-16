@@ -166,10 +166,6 @@ The average distance of the rows to the nearest vertex measures **selectivity**:
 
 Where the centroid (average row) falls in the simplex tells us about **bias**: does the head, on average, favor certain tokens?
 
-### Effective Support
-
-For each row $a_i$, the quantity $\beta_i = 1/\|a_i\|_2^2$ tells us the effective number of tokens attended to. It ranges from 1 (delta distribution, one token) to $n$ (uniform, all tokens equally).
-
 ---
 
 ## Step 4: Connections to Information Geometry
@@ -220,7 +216,3 @@ We saw that:
 While we can only draw these pictures for small matrices ($n \leq 4$), the geometric intuitions — about rank, volume, and curvature — transfer directly to the high-dimensional case. The simplex is always there, even when we can not see it.
 
 The next time you stare at an attention heatmap, remember: behind those colored squares lives a tetrahedron, and the shape of attention is written on its faces.
-
----
-
-*The accompanying notebook provides interactive visualizations of these concepts, with code to reproduce all figures and compute geometric quantities for arbitrary $4 \times 4$ attention matrices.*
