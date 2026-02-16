@@ -11,7 +11,7 @@ featured: true
 
 ## Introduction
 
-Transformers are everywhere — from language models to vision systems — and at their core lies the **attention mechanism**. We often visualize attention as heatmaps: grids of numbers showing how much each token "looks at" every other token. But these heatmaps, while useful, hide a rich geometric structure.
+From language models to vision systems, transformers have took the scene as a all-in-one architechtures, and at their core lies the **attention mechanism**. We often visualize attention as heatmaps: grids of numbers showing how much each token "looks at" every other token. But these heatmaps, while useful, hide a rich geometric structure.
 
 What if we could *see* attention patterns as shapes? As points, lines, and volumes inside a well-known geometric object?
 
@@ -23,7 +23,7 @@ Let us take this walk from definitions to pictures.
 
 ---
 
-## Step 1: The Players — Simplices and Attention
+## Step 1: Simplices and Attention
 
 ### The Simplex
 
@@ -34,9 +34,9 @@ $$\Delta^{n-1} = \left\{ (p_1, \ldots, p_n) \in \mathbb{R}^n \;\middle|\; p_i \g
 For small $n$:
 - $n = 2$: a line segment (between "all on token 1" and "all on token 2")
 - $n = 3$: a triangle (the 2-simplex)
-- $n = 4$: a tetrahedron (the 3-simplex) — this is our playground
+- $n = 4$: a tetrahedron (the 3-simplex).
 
-The **vertices** of the simplex are the "pure" distributions: $e_1 = (1, 0, 0, 0)$, $e_2 = (0, 1, 0, 0)$, etc. The **center** $(1/n, \ldots, 1/n)$ is the uniform distribution — maximum uncertainty, maximum entropy.
+The **vertices** of the simplex are the "pure" distributions: $e_1 = (1, 0, 0, 0)$, $e_2 = (0, 1, 0, 0)$, etc. The **center** $(1/n, \ldots, 1/n)$ is the uniform distribution.
 
 ### Attention
 
@@ -54,7 +54,7 @@ Each row $a_i$ is therefore a point on the $(n{-}1)$-simplex $\Delta^{n-1}$.
 
 This is the key insight: **an $n \times n$ attention matrix $A$ places $n$ points on the $(n{-}1)$-simplex.** Row $i$ of $A$ is the point in $\Delta^{n-1}$ representing the attention distribution of token $i$.
 
-The **convex hull** of these $n$ points — the smallest convex shape containing them — is what we call the **row polytope** of $A$. The geometry of this polytope encodes properties of the attention pattern:
+The **convex hull** of these $n$ points, the smallest convex shape containing them. is what we call the **row polytope** of $A$. The geometry of this polytope encodes properties of the attention pattern:
 
 | Geometric property | Attention interpretation |
 |---|---|
@@ -76,7 +76,7 @@ In general, the row polytope lives in a $(r{-}1)$-dimensional affine subspace, w
 
 ## Step 3: Five Archetypes on the 3-Simplex
 
-We now consider $4 \times 4$ attention matrices — the sweet spot where we can still visualize things in 3D (the 3-simplex is a tetrahedron). We pick five archetypal patterns that appear in real transformer heads:
+We now consider $4 \times 4$ attention matrices, the sweet spot where we can still visualize things in 3D (the 3-simplex is a tetrahedron). We pick five archetypal patterns that appear in real transformer heads:
 
 ![Attention heatmaps for the five archetypes](figures/heatmaps.png)
 
@@ -86,7 +86,7 @@ $$A_{\text{sink}} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 1 & 0 & 0 
 
 Every token sends all its attention to token 1 (the "sink" or "BOS" token). All four rows are the same point: the vertex $e_1$. The polytope is a single point. Rank = 1.
 
-This is the degenerate extreme: maximum selectivity, zero diversity. In practice, some attention heads in language models do exactly this — they learn to "park" attention on a designated token when there is nothing useful to attend to. These are sometimes called **attention sinks** or **null heads**.
+This is the degenerate extreme: maximum selectivity, zero diversity. In practice, some attention heads in language models do exactly this: they learn to "park" attention on a designated token when there is nothing useful to attend to. These are sometimes called **attention sinks** or **null heads**.
 
 ### 2. The Rank-2 Head
 
@@ -110,7 +110,7 @@ This pattern implements a **shift operation**: the output at position $i$ copies
 
 $$A_{\text{full}} = \begin{pmatrix} 0.70 & 0.10 & 0.10 & 0.10 \\ 0.10 & 0.70 & 0.10 & 0.10 \\ 0.10 & 0.10 & 0.70 & 0.10 \\ 0.10 & 0.10 & 0.10 & 0.70 \end{pmatrix}$$
 
-Each token mostly attends to itself, with some residual attention spread uniformly. The four rows form a **tetrahedron** inside the simplex — the polytope is a scaled-down copy of the full simplex, centered but shifted toward the vertices. Rank = 4 (full rank, generically as we perturb from identity). Actually this specific matrix has rank 2 since $A = 0.1 \cdot \mathbf{1}\mathbf{1}^\top + 0.6 \cdot I$ but let us use a less symmetric version:
+Each token mostly attends to itself, with some residual attention spread uniformly. The four rows form a **tetrahedron** inside the simplex: the polytope is a scaled-down copy of the full simplex, centered but shifted toward the vertices. Rank = 4 (full rank, generically as we perturb from identity). Actually this specific matrix has rank 2 since $A = 0.1 \cdot \mathbf{1}\mathbf{1}^\top + 0.6 \cdot I$ but let us use a less symmetric version:
 
 $$A_{\text{full}} = \begin{pmatrix} 0.70 & 0.15 & 0.10 & 0.05 \\ 0.05 & 0.65 & 0.20 & 0.10 \\ 0.10 & 0.05 & 0.75 & 0.10 \\ 0.08 & 0.12 & 0.05 & 0.75 \end{pmatrix}$$
 
@@ -128,16 +128,16 @@ This is a common pattern in early layers of transformers: a combination of posit
 
 The interactive 3D visualizations below (generated with Plotly — drag to rotate, scroll to zoom, hover for details) show each polytope inside the tetrahedron:
 
-<iframe src="figures/simplex_all_polytopes.html" width="100%" height="450" frameborder="0" style="border:none;"></iframe>
+<iframe src="./figures/simplex_all_polytopes.html" width="100%" height="450" frameborder="0" style="border:none;"></iframe>
 
 Explore each archetype individually:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-<iframe src="figures/simplex_sink_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_rank2_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_previoustoken_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_fullrank_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_sink_plus_diagonal.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="./figures/simplex_sink_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="./figures/simplex_rank2_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="./figures/simplex_previoustoken_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="./figures/simplex_fullrank_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="./figures/simplex_sink_plus_diagonal.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
 </div>
 
 
