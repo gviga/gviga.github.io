@@ -78,7 +78,7 @@ In general, the row polytope lives in a $(r{-}1)$-dimensional affine subspace, w
 
 We now consider $4 \times 4$ attention matrices, the sweet spot where we can still visualize things in 3D (the 3-simplex is a tetrahedron). We pick five archetypal patterns that appear in real transformer heads:
 
-![Attention heatmaps for the five archetypes](figures/heatmaps.png)
+![Attention heatmaps for the five archetypes](/assets/img/figures/heatmaps.png)
 
 ### 1. The Sink Head
 
@@ -128,16 +128,16 @@ This is a common pattern in early layers of transformers: a combination of posit
 
 The interactive 3D visualizations below (generated with Plotly — drag to rotate, scroll to zoom, hover for details) show each polytope inside the tetrahedron:
 
-<iframe src="figures/simplex_all_polytopes.html" width="100%" height="450" frameborder="0" style="border:none;"></iframe>
+<iframe src="/assets/img/figures/simplex_all_polytopes.html" width="100%" height="450" frameborder="0" style="border:none;"></iframe>
 
 Explore each archetype individually:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-<iframe src="figures/simplex_sink_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_rank2_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_previoustoken_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_fullrank_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
-<iframe src="figures/simplex_sink_plus_diagonal.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="/assets/img/figures/simplex_sink_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="/assets/img/figures/simplex_rank2_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="/assets/img/figures/simplex_previoustoken_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="/assets/img/figures/simplex_fullrank_head.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
+<iframe src="/assets/img/figures/simplex_sink_plus_diagonal.html" width="48%" height="400" frameborder="0" style="border:1px solid #eee;"></iframe>
 </div>
 
 
@@ -192,7 +192,7 @@ On the simplex, entropy defines a "height function": the center has maximum entr
 
 There is a beautiful **uncertainty principle** at play: a row cannot be simultaneously close to two different vertices. If $a_i$ is close to $e_j$ (high attention on token $j$), it must be far from all other vertices. The simplex geometry enforces this tradeoff between attending to one thing vs. spreading attention.
 
-![Fisher-Rao and TV distances between rows](figures/fisher_rao_distances.png)
+![Fisher-Rao and TV distances between rows](/assets/img/figures/fisher_rao_distances.png)
 
 ### From Fisher-Rao to Attention Analysis
 
