@@ -78,7 +78,7 @@ In general, the row polytope lives in a $(r{-}1)$-dimensional affine subspace, w
 
 We now consider $4 \times 4$ attention matrices, the sweet spot where we can still visualize things in 3D (the 3-simplex is a tetrahedron). We pick five archetypal patterns that appear in real transformer heads:
 
-![Attention heatmaps for the five archetypes](/assets/img/figures/heatmaps.png)
+<img src="/assets/img/figures/heatmaps.png" alt="Attention heatmaps for the five archetypes" width="100%"/>
 
 ### 1. The Sink Head
 
@@ -191,8 +191,6 @@ The entropy of a row $H(a_i) = -\sum_j a_{ij} \log a_{ij}$ measures **uncertaint
 On the simplex, entropy defines a "height function": the center has maximum entropy ($\log n$), and the vertices have minimum entropy (0). Lines of constant entropy are "level sets" — curves on the simplex where all distributions have the same uncertainty.
 
 There is a beautiful **uncertainty principle** at play: a row cannot be simultaneously close to two different vertices. If $a_i$ is close to $e_j$ (high attention on token $j$), it must be far from all other vertices. The simplex geometry enforces this tradeoff between attending to one thing vs. spreading attention.
-
-![Fisher-Rao and TV distances between rows](/assets/img/figures/fisher_rao_distances.png)
 
 ### From Fisher-Rao to Attention Analysis
 
