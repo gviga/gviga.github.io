@@ -217,7 +217,7 @@ But if relevant distinctions are lost before reaching the logits, probability-ba
 A clean demonstration of this comes from a controlled copy task. The model is given a bit string and asked to reproduce it. Two input families are compared: the all-zero string (easy) and a string with a single one at a hidden position (hard).
 
 <figure>
-  <img src="/assets/img/perturbation_analysis_across_metrics.svg" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation">
+  <img src="/assets/img/perturbation_analysis_across_metrics (1).svg" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation">
   <figcaption><strong>Figure 5.</strong> Perturbation sensitivity in a controlled copy task. As the sequence length $n$ grows, perplexity (left) and mean token entropy collapse the two input families together, even though they differ in a task-relevant position. Routing-based signals (RAUQ and ours) keep the two families separated, because the distinction is still visible upstream in the attention geometry.</figcaption>
 </figure>
 
