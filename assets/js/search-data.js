@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-attention-on-the-simplex",
+        },{id: "post-spectral-geometry-of-attention-from-information-routing-to-uncertainty",
+        
+          title: "Spectral Geometry of Attention: From Information Routing to Uncertainty",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/spectral-attention/";
+          
+        },
+      },{id: "post-attention-on-the-simplex",
         
           title: "Attention on the Simplex",
         
