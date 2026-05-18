@@ -21,7 +21,7 @@ This post summarizes the main idea of our paper: attention can be studied throug
 This distinction matters because attention sinks can make a head look important even when little token-dependent information is actually being routed. Our work introduces a geometric framework that separates these effects and uses the resulting signal to improve uncertainty estimation in large language models.
 
 <figure>
-  <img src="/assets/img/teaser_Neurips2026.svg" alt="Teaser figure showing the three blocks of the contribution">
+  <img src="/assets/img/teaser_Neurips2026.svg" alt="Teaser figure showing the three blocks of the contribution" style="width: 100%;">
   <figcaption><strong>Figure 1.</strong> <em>(Right block)</em> We study transformer attention as a functional map between Hilbert spaces equipped with an inner product. The properties of the operator change with the standard Euclidean measure (blue) and with an intrinsic probability geometry measure (red). <em>(Center block)</em> Parametrizing a row-stochastic causal map that interpolates between a copy map and a sink map, the Euclidean spectrum gets biased towards the sink, while reweighting the input measure relaxes this bias. <em>(Left block)</em> We use these insights to design an uncertainty quantifier, identifying uncertainty as a routing-capacity collapse in selected heads.</figcaption>
 </figure>
 
@@ -178,7 +178,7 @@ The main prediction is that intrinsic spectral diagnostics should be less domina
 This is exactly what we observe.
 
 <figure>
-  <img src="/assets/img/representative_heads%20(1).svg" alt="Representative attention heads with metric comparison">
+  <img src="/assets/img/representative_heads%20(1).svg" alt="Representative attention heads with metric comparison" style="width: 100%;">
   <figcaption><strong>Figure 2.</strong> Four representative attention heads from LLaMA-3.1-8B (top row) and how the different metrics classify their routing behaviour (bar charts). The intrinsic TDO (red and orange bars) is the only metric that correctly aligns the <em>Sink-Biased</em> head with the other high-routing maps (copying and shifting), instead of collapsing it onto the pure <em>Sinking</em> head.</figcaption>
 </figure>
 
@@ -191,14 +191,14 @@ The intrinsic TDO is the only metric that assigns high routing scores to copying
 Stepping beyond cherry-picked examples, we can plot the metrics against sink score and against the output entropy $H(AV)$ across all heads in the model.
 
 <figure>
-  <img src="/assets/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score">
+  <img src="/assets/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score" style="width: 100%;">
   <figcaption><strong>Figure 3.</strong> Each diagnostic for attention heads of LLaMA-3.1-8B on 200 inputs, plotted against sink score. Spearman correlations are reported in the top-right of each panel. Raw attention statistics and Euclidean spectra correlate strongly with sink score; the intrinsic TDO statistics (rightmost two panels) decorrelate from it.</figcaption>
 </figure>
 
 The intrinsic TDO is essentially measuring something different from where the mass goes. The next question is whether that "something" lines up with the actual output dimensionality of the head.
 
 <figure>
-  <img src="/assets/img/output_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus output spectral entropy">
+  <img src="/assets/img/output_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus output spectral entropy" style="width: 100%;">
   <figcaption><strong>Figure 4.</strong> Same heads as above, now plotted against the output entropy $H(AV)$. The intrinsic TDO statistics show the strongest correlation with output dimensionality, while raw entropies and counting-geometry ranks fail in complementary ways.</figcaption>
 </figure>
 
@@ -217,7 +217,7 @@ But if relevant distinctions are lost before reaching the logits, probability-ba
 A clean demonstration of this comes from a controlled copy task. The model is given a bit string and asked to reproduce it. Two input families are compared: the all-zero string (easy) and a string with a single one at a hidden position (hard).
 
 <figure>
-  <img src="/assets/img/perturbation_analysis_across_metrics (1).svg" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation">
+  <img src="/assets/img/perturbation_analysis_across_metrics (1).svg" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation" style="width: 100%;">
   <figcaption><strong>Figure 5.</strong> Perturbation sensitivity in a controlled copy task. As the sequence length $n$ grows, perplexity (left) and mean token entropy collapse the two input families together, even though they differ in a task-relevant position. Routing-based signals (RAUQ and ours) keep the two families separated, because the distinction is still visible upstream in the attention geometry.</figcaption>
 </figure>
 
@@ -305,11 +305,3 @@ Spectral geometry gives a new way to look at attention.
 Instead of asking only where attention mass goes, we ask what information survives the attention step. The Token Difference Operator makes this question precise. Its intrinsic spectrum separates sink effects from true routing capacity, connects attention to output dimensionality, and provides a useful signal for uncertainty estimation.
 
 In short, attention heads should not be understood only as heatmaps. They should also be understood as geometric operators that route, compress, and sometimes collapse information.
-
-The next time we inspect an attention map, the important question may not be:
-
-> Where is the model looking?
-
-but rather:
-
-> What information is still being routed?
