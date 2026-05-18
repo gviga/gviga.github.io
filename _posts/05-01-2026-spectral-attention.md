@@ -191,7 +191,7 @@ The intrinsic TDO is the only metric that assigns high routing scores to copying
 Stepping beyond cherry-picked examples, we can plot the metrics against sink score and against the output entropy $H(AV)$ across all heads in the model.
 
 <figure>
-  <img src="aseets/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score">
+  <img src="/assets/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score">
   <figcaption><strong>Figure 3.</strong> Each diagnostic for attention heads of LLaMA-3.1-8B on 200 inputs, plotted against sink score. Spearman correlations are reported in the top-right of each panel. Raw attention statistics and Euclidean spectra correlate strongly with sink score; the intrinsic TDO statistics (rightmost two panels) decorrelate from it.</figcaption>
 </figure>
 
