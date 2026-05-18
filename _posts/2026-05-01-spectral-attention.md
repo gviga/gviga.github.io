@@ -7,18 +7,22 @@ categories: [science, geometry, machine-learning]
 featured: True
 ---
 
+*Joint work with [Simone Melzi](https://sites.google.com/site/melzismn/) and [Maks Ovsjanikov](http://www.lix.polytechnique.fr/~maks/). The paper is currently under review.*
+
+
 ## Introduction
 
-Attention is often described through heatmaps: grids of numbers showing how much each token attends to every other token. This view is intuitive, and it has been extremely useful for understanding transformers. But it also hides something important.
+Attention has been studied from many angles. The most common one is row-wise: each row of an attention matrix is a probability distribution over tokens, and the resulting heatmaps tell us where each query position is looking. Other lines of work treat attention as a graph operator, a Markov transition matrix, or analyze the QK eigenspectrum. These perspectives have produced real insights.
 
-An attention head is not only a table of probabilities. It is also an **operator**: it takes information stored across tokens and routes it to new token positions.
+What has been less explored is a different angle on the same object: the single-step map $V \mapsto AV$ as a global linear operator between token-space signals, with its own geometry on each side. This is the perspective our paper develops.
 
-This post summarizes the main idea of our paper: attention can be studied through the lens of **spectral geometry**. By doing so, we can better distinguish between two phenomena that are often confused:
+The reason this matters is that the conventional spectral analysis of attention — singular values of $A$, eigenvalues of $A^\top A$ — uses an unweighted Euclidean geometry that does not fit a row-stochastic causal map well. As a consequence, three things end up tangled together that the paper argues should be separated:
 
-1. attention mass concentrating on a few tokens,
-2. genuine information routing across the sequence.
+1. **attention sinks**: mass accumulating on a few early tokens,
+2. **dimensional collapse**: the head output losing effective rank,
+3. **routing capacity**: how much token-dependent information survives one attention step.
 
-This distinction matters because attention sinks can make a head look important even when little token-dependent information is actually being routed. Our work introduces a geometric framework that separates these effects and uses the resulting signal to improve uncertainty estimation in large language models.
+Standard diagnostics conflate these. The framework we introduce — a Token Difference Operator equipped with an intrinsic probability geometry pulled back from attention itself — separates them. The resulting spectral signal also turns out to carry useful information for uncertainty estimation in language models, especially when the task depends on routing distinctions through long contexts.
 
 <figure>
   <img src="/assets/img/teaser_Neurips2026.svg" alt="Teaser figure showing the three blocks of the contribution" style="width: 100%;">
@@ -35,199 +39,149 @@ $$
 V \mapsto AV.
 $$
 
-The usual interpretation is row-wise: each row of $A$ is a probability distribution over tokens. Row $i$ tells us where token $i$ is looking.
+The standard view is row-wise: each row of $A$ is a probability distribution over tokens, and row $i$ tells us where token $i$ is looking. This is informative, and it is not the only way to read $A$. Prior work has analyzed attention as a graph operator on an associated Laplacian, as a Markov transition matrix iterated through depth, or through the spectrum of $QK^\top$.
 
-But there is another interpretation. The matrix $A$ is a **linear operator on token-space signals**. It takes a function defined on input tokens and transports it to output tokens.
-
-In other words, instead of asking only:
-
-> Which tokens receive attention mass?
-
-we ask:
-
-> Which token-dependent signals survive the attention operation?
-
-This shift from local attention weights to global operator behavior is the starting point of our work.
+The angle we take is specific in two ways. First, we focus on the **single-step** map $V \mapsto AV$ rather than its repeated or graph-Laplacian variants. Second, we treat the input and output token spaces as carrying their **own geometries**, so that the same matrix $A$ is read as a linear map between two distinct Hilbert spaces rather than as an operator on a single Euclidean space. With this setup, the natural object of study is no longer the raw spectrum of $A^\top A$ but the spectrum of an associated operator that takes both geometries into account.
 
 ---
 
 ## Step 2: Why the usual spectrum can be misleading
 
-A natural way to study an operator is through its spectrum. For attention, one might look at the singular values of $A$, or equivalently at the spectrum of:
+The standard way to study an operator is through its spectrum, so for attention one might look at the singular values of $A$ or the eigenvalues of:
 
 $$
 A^\top A.
 $$
 
-However, this standard Euclidean analysis has a structural problem.
+This analysis carries a structural problem.
 
-Attention matrices are row-stochastic: every row sums to one. In causal transformers, early tokens are visible to many later positions, while later tokens are visible to fewer positions. This naturally creates **attention sinks**, where large amounts of attention mass accumulate on early tokens.
+Attention matrices are row-stochastic: every row sums to one. Under causal masking, early tokens are visible to many later positions while later tokens are visible to fewer, so column mass naturally piles up on the first tokens — the well-documented attention sink phenomenon. The Euclidean spectrum is sensitive to this column-mass concentration. In the extreme case where every row attends only to the first token, $A^\top A$ becomes a rank-one matrix with all its spectral energy at the sink coordinate. The matrix looks spectrally rich, but no token-dependent variation has actually been routed.
 
-The issue is that Euclidean spectral diagnostics can amplify this column-mass concentration. As a result, a head may appear to have strong spectral structure simply because it sends mass to a sink token, not because it preserves meaningful token-dependent variation.
-
-In the extreme case, all tokens attend to the first token. The attention map has a strong spectral signal, but it has collapsed all token information into one direction.
-
-So the usual spectrum can confuse:
+Three distinct phenomena get tangled in this picture:
 
 | Phenomenon | What it means |
 |---|---|
-| Sink concentration | Attention mass accumulates on a few tokens |
-| Routing capacity | Token-dependent information survives the attention step |
+| Sink concentration | Column mass piles up on a few (typically early) tokens |
+| Dimensional collapse | The head output $AV$ loses effective rank |
+| Routing capacity | Token-dependent variation survives the attention step |
 
-The goal is to separate these two.
+These are related but not equivalent. Rank deficiency of causal $A$ forces both sink concentration and routing collapse, and routing collapse implies dimensional collapse downstream. But a head can have substantial sink mass and still route a rich centered signal: the converse fails. The goal of the framework is to give a diagnostic that does not flatten these three regimes onto the same number.
 
 ---
 
 ## Step 3: The Token Difference Operator
 
-To fix this, we introduce the **Token Difference Operator** (TDO).
-
-Instead of treating attention as an operator in ordinary Euclidean space, we view it as a map between two weighted Hilbert spaces on the token sequence:
+We view $A$ as a map between two weighted Hilbert spaces on the token sequence:
 
 $$
 A : L^2(\mu) \to L^2(\pi).
 $$
 
-Here, $\mu$ and $\pi$ are measures that define the geometry of the input and output token spaces.
-
-Given this setup, the adjoint of attention is:
+Here $\mu$ and $\pi$ are positive measures encoding the geometries of the input and output token spaces. The adjoint of attention under these inner products is:
 
 $$
 A^* = \Omega_\mu^{-1} A^\top \Omega_\pi,
 $$
 
-and the Token Difference Operator is:
+and the **Token Difference Operator** (TDO) is:
 
 $$
 D_{\mu,\pi} = A^*A = \Omega_\mu^{-1} A^\top \Omega_\pi A.
 $$
 
-This operator measures how much attention stretches or compresses token-space signals under the chosen geometry.
-
-The key point is that the spectrum of $D_{\mu,\pi}$ depends on the geometry. If we choose the wrong geometry, we see sink bias. If we choose the right geometry, we isolate genuine routing.
+The operator is self-adjoint and positive semidefinite in $L^2(\mu)$, and its eigenvalues are the squared gains of $A$ between the two geometries. The standard Euclidean Gram matrix $A^\top A$ is just the special case $\mu = \pi = \mathbf{1}$. The point of the construction is that the spectrum of $D_{\mu,\pi}$ depends on the choice of geometry, so the question becomes: which geometry isolates the routing signal?
 
 ---
 
 ## Step 4: The intrinsic probability geometry
 
-We propose an intrinsic geometry induced by attention itself.
-
-We choose the output measure to be uniform:
+The choice we make is to take the output geometry uniform and pull the input geometry back through attention:
 
 $$
-\pi = \frac{1}{n}\mathbf{1},
+\pi = \frac{1}{n}\mathbf{1}, \qquad \mu = A^\top \pi.
 $$
 
-and define the input measure by pulling it back through attention:
+Both are probability measures. Intuitively, $\mu_j$ is the average attention mass received by token $j$ across all query positions, so sink tokens are upweighted in the input geometry, exactly compensating for the column-mass imbalance that biased the Euclidean spectrum.
+
+Under this choice, attention is non-expansive:
 
 $$
-\mu = A^\top \pi.
+\|Af\|_\pi \leq \|f\|_\mu,
 $$
 
-Intuitively, $\mu$ is the average amount of attention received by each token. Tokens that receive more mass are weighted accordingly in the input geometry.
-
-This choice removes the artificial amplification of sink tokens. The constant mode becomes the trivial mode that every row-stochastic attention map preserves, while the remaining modes describe actual token-dependent routing.
-
-In this geometry, the operator is non-expansive:
-
-$$
-\|Af\|_\pi \leq \|f\|_\mu.
-$$
-
-The leading mode is always the constant function. Therefore, the interesting part is not the first eigenvalue, but the spectrum on the centered subspace: the directions that carry variation between tokens.
+with operator norm one. The constant function attains this norm, so $\lambda_1(D_{\mu,\pi}) = 1$ and its eigenvector is the constant mode. Every row-stochastic attention map preserves constants automatically, so the leading eigenvalue carries no information about routing — it is fixed by the constraints alone. The informative part of the spectrum lives on the $\mu$-orthogonal complement of the constants: the centered subspace, which carries actual token-dependent variation.
 
 ---
 
 ## Step 5: Separating the mean from routing
 
-This leads to one of the central decompositions of the paper.
-
-Given a value matrix $V$, we decompose it into its attention-weighted mean and its centered component:
+This leads to a clean decomposition of the head output. Define the $\mu$-weighted mean of the value matrix and the centered remainder:
 
 $$
 m = \mu^\top V, \qquad V_c = V - \mathbf{1}m.
 $$
 
-Then the output of attention decomposes as:
+Since $A\mathbf{1} = \mathbf{1}$, the output of attention splits as:
 
 $$
 AV = \mathbf{1}m + AV_c.
 $$
 
-This equation has a simple interpretation.
+The first term, $\mathbf{1}m$, is the transported mean. Every row-stochastic attention map produces this term automatically, and it carries the same value at every token position. The second term, $AV_c$, is what actually depends on which token is being read out: it is the routed component.
 
-The term $\mathbf{1}m$ is the transported mean. It is the part that every row-stochastic attention map preserves by construction.
+The nontrivial spectrum of $D_{\mu,\pi}$ controls how much of this centered variation survives. In particular, the second eigenvalue $\lambda_2(D_{\mu,\pi})$ bounds the contraction of the routed component:
 
-The term $AV_c$ is the routed component. It contains the token-dependent information that survives the attention step.
+$$
+\|AV_c\|_\pi \leq \sqrt{\lambda_2(D_{\mu,\pi})}\, \|V_c\|_\mu.
+$$
 
-The nontrivial spectrum of the Token Difference Operator controls how much of this centered variation remains. In particular, the second eigenvalue controls the strongest possible contraction of centered signals.
-
-This gives a clean mathematical separation between:
-
-1. what attention preserves automatically,
-2. what attention actually routes.
+This is the precise sense in which the spectrum measures routing capacity. After the trivial constant mode has been accounted for, it bounds the energy of the centered, token-dependent component that can survive one attention step.
 
 ---
 
 ## Step 6: What this tells us about attention heads
 
-We test this idea on real attention heads.
-
-The main prediction is that intrinsic spectral diagnostics should be less dominated by sink behavior and more aligned with output dimensionality.
-
-This is exactly what we observe.
+With the framework in place, we can test it on real attention heads. The two predictions are that intrinsic spectral diagnostics should be (i) less dominated by sink concentration and (ii) more aligned with the dimensionality of the head output than their Euclidean counterparts.
 
 <figure>
   <img src="/assets/img/representative_heads%20(1).svg" alt="Representative attention heads with metric comparison" style="width: 100%;">
   <figcaption><strong>Figure 2.</strong> Four representative attention heads from LLaMA-3.1-8B (top row) and how the different metrics classify their routing behaviour (bar charts). The intrinsic TDO (red and orange bars) is the only metric that correctly aligns the <em>Sink-Biased</em> head with the other high-routing maps (copying and shifting), instead of collapsing it onto the pure <em>Sinking</em> head.</figcaption>
 </figure>
 
-Consider four heads with clear routing roles: a *copying* head that preserves token information along the diagonal, a *sinking* head that collapses everything to the first token, a *sink-biased* head that has substantial sink mass but still routes information, and a *shifting* head that routes information one position back.
+The four heads in Figure 2 are chosen to expose failure modes of standard diagnostics: a *copying* head that preserves token-dependent information along the diagonal, a pure *sinking* head that collapses everything onto the first token, a *sink-biased* head with substantial sink mass but nontrivial routing through other positions, and a *shifting* head that routes information one position back.
 
-Standard attention statistics, Euclidean spectra, and graph-based diagnostics struggle here. They often treat the sink-biased head almost identically to the pure sink head, because they conflate column-mass concentration with routing collapse. The previous-token score correctly flags the shifting head, but for the same reason misses the copying head, which routes through a different position.
-
-The intrinsic TDO is the only metric that assigns high routing scores to copying, shifting, *and* sink-biased heads, while still separating them from the pure sink head. This matches what we want from a routing diagnostic.
-
-Stepping beyond cherry-picked examples, we can plot the metrics against sink score and against the output entropy $H(AV)$ across all heads in the model.
+Counting-geometry and graph-based diagnostics treat the sink-biased head almost identically to the pure sink head, because they cannot separate column-mass concentration from routing collapse. Previous-token score correctly flags the shifting head, but for the same reason misses the copying head, which routes through a different position. The intrinsic TDO is the only diagnostic in this comparison that assigns high routing scores to copying, shifting, and sink-biased heads while still separating them from the pure sink head.
 
 <figure>
   <img src="/assets/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score" style="width: 100%;">
   <figcaption><strong>Figure 3.</strong> Each diagnostic for attention heads of LLaMA-3.1-8B on 200 inputs, plotted against sink score. Spearman correlations are reported in the top-right of each panel. Raw attention statistics and Euclidean spectra correlate strongly with sink score; the intrinsic TDO statistics (rightmost two panels) decorrelate from it.</figcaption>
 </figure>
 
-The intrinsic TDO is essentially measuring something different from where the mass goes. The next question is whether that "something" lines up with the actual output dimensionality of the head.
+Across the full head population, this generalizes. Raw attention statistics, Euclidean spectra, and previous-token score all correlate strongly with sink score, with Spearman correlations between 0.5 and 1 in absolute value. The intrinsic TDO diagnostics decorrelate from sink score: they are measuring something other than where the mass goes.
 
 <figure>
   <img src="/assets/img/output_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus output spectral entropy" style="width: 100%;">
   <figcaption><strong>Figure 4.</strong> Same heads as above, now plotted against the output entropy $H(AV)$. The intrinsic TDO statistics show the strongest correlation with output dimensionality, while raw entropies and counting-geometry ranks fail in complementary ways.</figcaption>
 </figure>
 
-So sink behaviour does not always imply routing collapse, and the intrinsic spectrum is what we need to tell the two apart.
+The next question is whether that "something" lines up with the output dimensionality of the head. Plotting the same diagnostics against the spectral entropy $H(AV)$, the intrinsic TDO statistics show the strongest correlation. The baselines fail in complementary ways: raw entropies are dominated by sink structure, while log-determinant and Laplacian-based scores flag the collapsed extreme but miss the full range of output dimensionalities.
+
+The conclusion is structural rather than head-specific. Sink concentration does not by itself imply that a head has collapsed, and a clean diagonal does not by itself imply rich routing. The intrinsic spectrum is what tells these regimes apart.
 
 ---
 
 ## Step 7: From routing to uncertainty
 
-The second part of the paper uses this geometric signal for uncertainty estimation.
-
-Many uncertainty methods for language models rely on output probabilities: entropy, perplexity, likelihood, or sampling-based consistency. These methods look at the model after all internal computation has already been compressed into logits.
-
-But if relevant distinctions are lost before reaching the logits, probability-based uncertainty can miss them.
-
-A clean demonstration of this comes from a controlled copy task. The model is given a bit string and asked to reproduce it. Two input families are compared: the all-zero string (easy) and a string with a single one at a hidden position (hard).
+The second half of the paper uses this routing signal for uncertainty estimation. Most uncertainty methods for language models work at the output: entropy of the next-token distribution, perplexity, sequence likelihood, sampling-based consistency. These quantities are computed after the residual stream has been compressed into logits, so when task-relevant distinctions are lost upstream they cannot be recovered downstream.
 
 <figure>
   <img src="/assets/img/perturbation_analysis_across_metrics (1).svg" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation" style="width: 100%;">
   <figcaption><strong>Figure 5.</strong> Perturbation sensitivity in a controlled copy task. As the sequence length $n$ grows, perplexity (left) and mean token entropy collapse the two input families together, even though they differ in a task-relevant position. Routing-based signals (RAUQ and ours) keep the two families separated, because the distinction is still visible upstream in the attention geometry.</figcaption>
 </figure>
 
-As the sequence grows, perplexity and token entropy stop distinguishing the two families. The information is being compressed away before it reaches the logits. But routing-based signals, computed from attention geometry inside the model, still see the difference. This is the motivation for looking upstream.
+A controlled copy task illustrates this. The model is given a bit string and asked to reproduce it. Two input families are compared: the all-zero string, and a string with a single one at a hidden position. As the sequence length grows, perplexity and mean token entropy stop distinguishing the two families even though they differ in a task-relevant position — the distinction is being compressed before reaching the logits. Routing-based signals computed from hidden-layer attention geometry remain sensitive to it.
 
-We introduce **Spectral Attention Uncertainty Quantification**, or **SAUQ**. The intuition is:
-
-> If important routing heads lose spectral richness during generation, the model may be uncertain, even if its output probabilities still look confident.
-
-SAUQ combines token probability with a spectral routing score. In simplified form, the recurrence is:
+This motivates **Spectral Attention Uncertainty Quantification** (SAUQ): when routing capacity collapses inside a head, the model may be uncertain even if its output probabilities still look confident. SAUQ combines local token probability with a spectral routing score in a recurrent confidence:
 
 $$
 c_t = \alpha\, p_t + (1-\alpha)\, s_t\, c_{t-1}.
@@ -236,23 +190,21 @@ $$
 Here:
 
 - $p_t$ is the probability assigned to the generated token,
-- $s_t$ is the intrinsic spectral routing score,
+- $s_t = \mathrm{PR}(D_{\mu,\pi,t})$ is the participation ratio of the TDO at step $t$,
 - $c_t$ is the propagated confidence,
 - $\alpha$ controls the balance between local probability and routed confidence.
 
-High spectral participation means that the head is still routing information through multiple active directions. Spectral collapse reduces propagated confidence.
+The recurrent structure follows RAUQ. What changes is the quantity entering the recurrence: a participation ratio of an intrinsic spectral operator rather than a scalar attention statistic.
 
 ---
 
 ## Step 8: Empirical results
 
-The empirical picture is nuanced.
+The empirical picture is regime-dependent rather than uniformly positive.
 
-On question-answering tasks, SAUQ is competitive with strong unsupervised uncertainty estimators, but it is not always the best method overall.
+On question-answering tasks, SAUQ is competitive with strong unsupervised estimators but is not the best method on average — several sample-based baselines obtain stronger QA means. On summarization, where uncertainty depends more on preserving long-range distinctions through the context, SAUQ has the strongest mean among the methods considered, with the clearest gains on SAMSum and XSum.
 
-On summarization tasks, however, SAUQ performs especially well. It achieves the strongest summarization mean among the compared methods, with the clearest gains on SAMSum and XSum.
-
-A condensed view of the main results (Prediction Rejection Ratio, higher is better):
+A condensed view of the main numbers (Prediction Rejection Ratio, higher is better):
 
 | Estimator | Category | QA mean | Summ. mean |
 |---|---|---|---|
@@ -266,42 +218,34 @@ A condensed view of the main results (Prediction Rejection Ratio, higher is bett
 | LogDetRAUQ | Single pass | 0.3280 | 0.4168 |
 | **SAUQ (ours)** | Single pass | 0.3831 | **0.5069** |
 
-This fits the motivation of the method. Summarization depends heavily on preserving long-range distinctions across the context. When those distinctions are compressed before reaching the logits, output-probability methods can lose useful uncertainty information. A routing-based spectral signal can still detect that something has collapsed.
+The pattern is consistent with the motivation. When task-relevant distinctions are still visible in the output distribution, output-probability estimators already capture them, and routing-based signals do not add much. When the relevant information has been compressed upstream, routing-based spectral signals can still see what the logits no longer can. SAUQ is therefore best read as a complementary single-pass signal — particularly useful for long-context generation — rather than as a uniform replacement for probability-based methods.
 
-The result is not that SAUQ replaces all uncertainty methods. Rather, it provides a complementary single-pass signal, especially useful when uncertainty is tied to long-context information routing.
+The comparison with LapEigValRAUQ and LogDetRAUQ is the most direct ablation of the framework's contribution: these methods share SAUQ's recurrence and head-selection protocol, and differ only in what spectral quantity enters the routing score. The ranking on summarization mirrors the diagnostic comparison from the previous section — intrinsic TDO statistics carry more of the routing signal than Laplacian or log-determinant alternatives, and this translates into stronger single-pass uncertainty.
 
 ---
 
 ## Main contributions
 
-The paper makes four main contributions.
+The paper makes four contributions.
 
-First, it introduces a **global operator-theoretic view of attention**. Instead of studying attention only as row-wise probabilities, it treats each attention head as a functional operator acting on token-space signals.
+First, a **global single-step operator view of attention**. We treat each attention head as a linear functional operator $V \mapsto AV$ between geometrically distinct token spaces, focusing on the action of one attention step rather than on repeated or graph-Laplacian variants used in prior work.
 
-Second, it shows a **theoretical separation between sinks and dimensional collapse**. Standard Euclidean spectra can be biased by sink tokens, while the intrinsic probability geometry separates the constant mode from token-dependent routing modes.
+Second, a **separation between sinks, dimensional collapse, and routing capacity**. We show that the Euclidean spectrum of $A$ is structurally biased by column-mass concentration, and derive an intrinsic probability geometry in which the constant mode is fixed and the remaining spectrum describes the centered, token-dependent routing.
 
-Third, it provides a **spectral description of routing capacity**. The Token Difference Operator quantifies how much centered token variation survives one attention step and how this relates to the dimensionality of the head output.
+Third, a **spectral characterization of routing**. The Token Difference Operator gives a precise bound on how much centered variation survives one attention step, and its participation ratio aligns with the dimensionality of the head output across the model.
 
-Fourth, it introduces **SAUQ**, a single-pass uncertainty estimator that uses spectral routing information from attention heads rather than relying only on output probabilities.
+Fourth, a **single-pass uncertainty estimator**. SAUQ replaces the scalar attention statistic inside an established recurrence with an intrinsic spectral routing score, and provides a complementary uncertainty signal that is particularly effective on long-form summarization.
 
 ---
 
 ## Why this matters
 
-The broader message is that attention is not just a probability matrix.
+The broader point is that the row-stochastic / heatmap view and the operator-geometric view are **complementary**, not competing. Heatmaps tell us where attention mass goes; the spectrum of the Token Difference Operator tells us what variation survives the routing step that this mass implements. Both descriptions act on the same matrix.
 
-It is a routing operator with a geometry of its own.
-
-Once we analyze attention in the right geometry, we can distinguish passive mass concentration from genuine information flow. This gives us better tools for interpreting attention heads, understanding routing collapse, and detecting uncertainty before it appears in the final output probabilities.
-
-This is especially relevant for long-context and long-form generation, where failures may come not from the final token distribution alone, but from information being compressed or lost earlier in the network.
+What changes once the second description is in place is what counts as a "rich" attention head. A head with substantial sink mass is not automatically collapsed, and a head with a clean diagonal is not automatically routing in a meaningful way: what matters is the centered spectrum under the right geometry. This has practical consequences for interpretability — where sink behavior is sometimes used as a proxy for low information flow — and for uncertainty estimation, where routing collapse upstream can predict failures the output distribution will not.
 
 ---
 
 ## Conclusion
 
-Spectral geometry gives a new way to look at attention.
-
-Instead of asking only where attention mass goes, we ask what information survives the attention step. The Token Difference Operator makes this question precise. Its intrinsic spectrum separates sink effects from true routing capacity, connects attention to output dimensionality, and provides a useful signal for uncertainty estimation.
-
-In short, attention heads should not be understood only as heatmaps. They should also be understood as geometric operators that route, compress, and sometimes collapse information.
+Spectral geometry gives a complementary way to read attention. Standard Euclidean diagnostics conflate sink concentration, dimensional collapse, and routing capacity. The intrinsic probability geometry separates the constant mode from the centered routing modes and gives a clean bound on how much token-dependent variation survives one attention step. The same spectral signal yields a complementary single-pass uncertainty estimator, with the strongest gains where uncertainty depends on long-range routing.
