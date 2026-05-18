@@ -178,7 +178,7 @@ The main prediction is that intrinsic spectral diagnostics should be less domina
 This is exactly what we observe.
 
 <figure>
-  <img src="/img/representative_heads%20(1).pdf" alt="Representative attention heads with metric comparison">
+  <img src="/img/representative_heads%20(1).svg" alt="Representative attention heads with metric comparison">
   <figcaption><strong>Figure 2.</strong> Four representative attention heads from LLaMA-3.1-8B (top row) and how the different metrics classify their routing behaviour (bar charts). The intrinsic TDO (red and orange bars) is the only metric that correctly aligns the <em>Sink-Biased</em> head with the other high-routing maps (copying and shifting), instead of collapsing it onto the pure <em>Sinking</em> head.</figcaption>
 </figure>
 
@@ -191,14 +191,14 @@ The intrinsic TDO is the only metric that assigns high routing scores to copying
 Stepping beyond cherry-picked examples, we can plot the metrics against sink score and against the output entropy $H(AV)$ across all heads in the model.
 
 <figure>
-  <img src="/img/sink_vs_metrics%20(1).pdf" alt="Scatterplots of diagnostics versus sink score">
+  <img src="/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score">
   <figcaption><strong>Figure 3.</strong> Each diagnostic for attention heads of LLaMA-3.1-8B on 200 inputs, plotted against sink score. Spearman correlations are reported in the top-right of each panel. Raw attention statistics and Euclidean spectra correlate strongly with sink score; the intrinsic TDO statistics (rightmost two panels) decorrelate from it.</figcaption>
 </figure>
 
 The intrinsic TDO is essentially measuring something different from where the mass goes. The next question is whether that "something" lines up with the actual output dimensionality of the head.
 
 <figure>
-  <img src="/img/output_vs_metrics%20(1).pdf" alt="Scatterplots of diagnostics versus output spectral entropy">
+  <img src="/img/output_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus output spectral entropy">
   <figcaption><strong>Figure 4.</strong> Same heads as above, now plotted against the output entropy $H(AV)$. The intrinsic TDO statistics show the strongest correlation with output dimensionality, while raw entropies and counting-geometry ranks fail in complementary ways.</figcaption>
 </figure>
 
@@ -217,7 +217,7 @@ But if relevant distinctions are lost before reaching the logits, probability-ba
 A clean demonstration of this comes from a controlled copy task. The model is given a bit string and asked to reproduce it. Two input families are compared: the all-zero string (easy) and a string with a single one at a hidden position (hard).
 
 <figure>
-  <img src="/img/perturbation_analysis_across_metrics.pdf" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation">
+  <img src="/img/perturbation_analysis_across_metrics.svg" alt="Perturbation analysis showing routing-based signals remain sensitive to a task-relevant perturbation">
   <figcaption><strong>Figure 5.</strong> Perturbation sensitivity in a controlled copy task. As the sequence length $n$ grows, perplexity (left) and mean token entropy collapse the two input families together, even though they differ in a task-relevant position. Routing-based signals (RAUQ and ours) keep the two families separated, because the distinction is still visible upstream in the attention geometry.</figcaption>
 </figure>
 
