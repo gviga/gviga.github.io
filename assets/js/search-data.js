@@ -45,6 +45,17 @@ ninja.data = [{
             window.location.href = "/blog/2026/attention_on_the_simplex/";
           
         },
+      },{id: "post-why-hallucinated-citations-are-not-an-ai-failure",
+        
+          title: "Why Hallucinated Citations Are Not an AI Failure",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai_hallucinations/";
+          
+        },
       },{id: "post-renforcing-the-role-of-rights-in-2026",
         
           title: "Renforcing the role of rights in 2026",
@@ -89,6 +100,9 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "news-our-paper-fuse-a-flow-based-mapping-between-shapes-with-l-olearo-f-maggioli-d-baieri-and-s-melzi-has-been-accepted-at-eccv2026",
           title: '🎉 Our paper FUSE: A Flow-based Mapping Between Shapes (with L. Olearo, F....',
+          description: "",
+          section: "News",},{id: "news-our-paper-spectral-geometry-of-attention-from-information-routing-to-uncertainty-with-s-melzi-and-maks-ovsjanikov-has-been-accepted-at-neurips-2026-let-s-gooo",
+          title: '🎉 Our paper Spectral Geometry Of Attention: From Information Routing to Uncertainty (with...',
           description: "",
           section: "News",},{
         id: 'social-email',
