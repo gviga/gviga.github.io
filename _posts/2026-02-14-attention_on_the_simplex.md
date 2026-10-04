@@ -4,6 +4,7 @@ title: "Attention on the Simplex"
 date: 2026-01-26
 tags: [ai]
 categories: [science, geometry]
+section: research
 featured: True
 ---
 

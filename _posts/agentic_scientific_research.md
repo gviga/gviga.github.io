@@ -4,6 +4,7 @@ title: "Scientific Research Agent"
 date: 2026-01-17
 tags: [ai, society, llms, trust, work]
 categories: [ai, philosophy, technology]
+section: thoughts
 featured: true
 ---
 

@@ -4,6 +4,7 @@ title: "Spectral Geometry of Attention: From Information Routing to Uncertainty"
 date: 2026-05-01
 tags: [ai, transformers, geometry, interpretability, uncertainty]
 categories: [science, geometry, machine-learning]
+section: research
 featured: True
 ---
 

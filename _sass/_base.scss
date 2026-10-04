@@ -558,6 +558,32 @@ footer.sticky-bottom {
   }
 }
 
+.blog-description {
+  max-width: 600px;
+  margin: 1rem auto 0;
+  color: var(--global-text-color-light);
+}
+
+.blog-section-nav {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.blog-section {
+  padding-top: 2.5rem;
+  scroll-margin-top: 4rem; // keep anchor targets clear of the fixed navbar
+
+  .blog-section-title {
+    color: var(--global-theme-color);
+    margin-bottom: 0.25rem;
+  }
+
+  .blog-section-subtitle {
+    color: var(--global-text-color-light);
+    margin-bottom: 0;
+  }
+}
+
 .tag-category-list {
   border-bottom: 1px solid var(--global-divider-color);
   text-align: center;

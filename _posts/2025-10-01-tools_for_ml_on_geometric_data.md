@@ -5,6 +5,7 @@ description: A curated list of open-source libraries for machine learning on 3D 
 date: 2025-10-01
 tags: [open-source, geometry-processing, machine-learning]
 categories: [tools]
+section: research
 featured: true
 ---
 

@@ -4,6 +4,7 @@ title: "Why Hallucinated Citations Are Not an AI Failure"
 date: 2026-01-26
 tags: [society]
 categories: [philosophy]
+section: thoughts
 featured: true
 ---
 

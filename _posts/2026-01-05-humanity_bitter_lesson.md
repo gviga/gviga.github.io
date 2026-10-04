@@ -5,6 +5,7 @@ description: "How the Bitter Lesson of AI scaling extends from algorithms to hum
 date: 2026-01-05
 tags: [ai, society, llms, bitter-lesson, trust, work]
 categories: [ai, philosophy, technology]
+section: thoughts
 featured: true
 image: /assets/img/quarto-stato-ai.jpg
 ---
