@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-spectral-geometry-of-attention-from-information-routing-to-uncertainty",
+        },{id: "post-why-milan-39-s-bike-lanes-don-39-t-work-and-how-to-measure-it",
+        
+          title: "Why Milan&#39;s Bike Lanes Don&#39;t Work (and How to Measure It)",
+        
+        description: "Turning a daily cycling frustration into a number: a graph-based metric for how well a city&#39;s bike lanes connect, tested on Milan, Paris, Amsterdam and 23 other European cities.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/milan_bike_lanes/";
+          
+        },
+      },{id: "post-spectral-geometry-of-attention-from-information-routing-to-uncertainty",
         
           title: "Spectral Geometry of Attention: From Information Routing to Uncertainty",
         
