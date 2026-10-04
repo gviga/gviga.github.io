@@ -5,7 +5,7 @@ description: "Turning a daily cycling frustration into a number: a graph-based m
 date: 2026-10-04
 tags: [cycling, cities, graphs, networks, open-data]
 categories: [science, geometry]
-section: research
+section: thoughts
 featured: true
 image: /assets/img/bike_lanes/shan_jiang_teaser.jpg
 ---
@@ -17,7 +17,7 @@ image: /assets/img/bike_lanes/shan_jiang_teaser.jpg
 
 ## Introduction
 
-I have been cycling in Milan for about 15 years, since I was a teenager. In that time I have changed seven bikes and fallen more times than I would like to admit. I have also lived and cycled in Paris and in the Netherlands, so I have a fairly concrete idea of what it feels like when a city's bike lanes actually work.
+I have been cycling in Milan for about 15 years, since I was a teenager. In that time I have changed bikes and fallen more times than I would like to admit. I have also lived and cycled in Paris and in the Netherlands, so I have a fairly concrete idea of what it feels like when a city's bike lanes actually work.
 
 If you ride a bike in Milan, you know the feeling. You find a nice protected lane, you relax for two blocks, and then it just *ends*. You are back in traffic, looking for where the next piece of lane starts again, usually on the other side of an intersection and thirty metres to the left.
 
