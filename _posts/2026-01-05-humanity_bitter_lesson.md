@@ -66,4 +66,3 @@ However, recognizing both the power and the limits of these systems is essential
 
 The Bitter Lesson taught us that scaling beats cleverness. Humanity’s next Bitter Lesson may be that scaling also beats many of the social advantages we once believed were uniquely ours.
 
-*This is a living document in my digital garden. I'll update it as I discover new tools or gain more experience with existing ones.*

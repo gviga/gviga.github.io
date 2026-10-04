@@ -50,5 +50,3 @@ Other libraries I haven't used extensively but that might be valuable depending 
 
 This list reflects only my own experience from the projects I've worked on in recent years. The landscape of tools for geometric machine learning is constantly evolving, and I'd love to hear about the tools or frameworks that others find most effective.
 ---
-
-*This is a living document in my digital garden—I'll update it as I discover new tools or gain more experience with existing ones.*

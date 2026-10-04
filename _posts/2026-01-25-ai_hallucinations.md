@@ -7,8 +7,6 @@ categories: [philosophy]
 featured: true
 ---
 
-![](/assets/img/ai_hallucination.png)
-
 # Why Hallucinated Citations Are Not an AI Failure
 
 In the last few days there has been extensive discussion about reports of hallucinated citations in accepted NeurIPS papers. Many reactions frame these cases as a catastrophic failure of the publication system, blaming irresponsible authors or presenting them as proof that AI is undermining scientific fairness. I think this framing avoids to talk about something more deep.
