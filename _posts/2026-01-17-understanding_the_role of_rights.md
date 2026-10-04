@@ -50,4 +50,3 @@ In this time of extreme political polarization, it becomes essential to keep the
 The fundamental role that rights play in society must not be forgotten; not as a luxury for the weak, but as a necessity for everyone.
 
 
-*This is a living document. I'll update it as I discover new tools or gain more experience with existing ones.*
