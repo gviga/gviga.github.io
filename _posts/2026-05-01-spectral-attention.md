@@ -26,7 +26,7 @@ The reason this matters is that the conventional spectral analysis of attention 
 Standard diagnostics conflate these. The framework we introduce — a Token Difference Operator equipped with an intrinsic probability geometry pulled back from attention itself — separates them. The resulting spectral signal also turns out to carry useful information for uncertainty estimation in language models, especially when the task depends on routing distinctions through long contexts.
 
 <figure>
-  <img src="/assets/img/teaser_Neurips2026.svg" alt="Teaser figure showing the three blocks of the contribution" style="width: 100%;">
+  <img src="/assets/img/teaser_Neurips2026.webp" alt="Teaser figure showing the three blocks of the contribution" style="width: 100%;">
   <figcaption><strong>Figure 1.</strong> <em>(Right block)</em> We study transformer attention as a functional map between Hilbert spaces equipped with an inner product. The properties of the operator change with the standard Euclidean measure (blue) and with an intrinsic probability geometry measure (red). <em>(Center block)</em> Parametrizing a row-stochastic causal map that interpolates between a copy map and a sink map, the Euclidean spectrum gets biased towards the sink, while reweighting the input measure relaxes this bias. <em>(Left block)</em> We use these insights to design an uncertainty quantifier, identifying uncertainty as a routing-capacity collapse in selected heads.</figcaption>
 </figure>
 
@@ -154,14 +154,14 @@ The four heads in Figure 2 are chosen to expose failure modes of standard diagno
 Counting-geometry and graph-based diagnostics treat the sink-biased head almost identically to the pure sink head, because they cannot separate column-mass concentration from routing collapse. Previous-token score correctly flags the shifting head, but for the same reason misses the copying head, which routes through a different position. The intrinsic TDO is the only diagnostic in this comparison that assigns high routing scores to copying, shifting, and sink-biased heads while still separating them from the pure sink head.
 
 <figure>
-  <img src="/assets/img/sink_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus sink score" style="width: 100%;">
+  <img src="/assets/img/sink_vs_metrics.webp" alt="Scatterplots of diagnostics versus sink score" style="width: 100%;">
   <figcaption><strong>Figure 3.</strong> Each diagnostic for attention heads of LLaMA-3.1-8B on 200 inputs, plotted against sink score. Spearman correlations are reported in the top-right of each panel. Raw attention statistics and Euclidean spectra correlate strongly with sink score; the intrinsic TDO statistics (rightmost two panels) decorrelate from it.</figcaption>
 </figure>
 
 Across the full head population, this generalizes. Raw attention statistics, Euclidean spectra, and previous-token score all correlate strongly with sink score, with Spearman correlations between 0.5 and 1 in absolute value. The intrinsic TDO diagnostics decorrelate from sink score: they are measuring something other than where the mass goes.
 
 <figure>
-  <img src="/assets/img/output_vs_metrics%20(1).svg" alt="Scatterplots of diagnostics versus output spectral entropy" style="width: 100%;">
+  <img src="/assets/img/output_vs_metrics.webp" alt="Scatterplots of diagnostics versus output spectral entropy" style="width: 100%;">
   <figcaption><strong>Figure 4.</strong> Same heads as above, now plotted against the output entropy $H(AV)$. The intrinsic TDO statistics show the strongest correlation with output dimensionality, while raw entropies and counting-geometry ranks fail in complementary ways.</figcaption>
 </figure>
 
