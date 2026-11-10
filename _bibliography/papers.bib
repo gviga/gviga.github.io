@@ -1,9 +1,44 @@
+@inproceedings{vigano2026spectral,
+      abbr = {NeurIPS},
+      title={Spectral Geometry of Attention: From Information Routing to Uncertainty},
+      author={Giulio Viganò and Simone Melzi and Maks Ovsjanikov},
+      booktitle = {Advances in Neural Information Processing Systems (NeurIPS 2026)},
+      year={2026},
+      eprint={2610.06012},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2610.06012},
+      pdf = {https://arxiv.org/pdf/2610.06012},
+      html = {https://arxiv.org/abs/2610.06012},
+      preview = {spectral_attention.png},
+}
+
 @article{olearo2025fuseflowbasedmappingshapes,
-      title={FUSE: A Flow-based Mapping Between Shapes}, 
+      abbr = {ECCV},
+      title={FUSE: A Flow-based Mapping Between Shapes},
       author={Lorenzo Olearo and Giulio Viganò and Daniele Baieri and Filippo Maggioli and Simone Melzi},
       year={2026},
       journal = {European Conference on Computer Vision (ECCV 2026)},
-      url={https://arxiv.org/abs/2511.13431}, 
+      url={https://arxiv.org/abs/2511.13431},
+      abstract={We introduce a novel neural representation for maps between 3D shapes
+        based on flow-matching models, which is computationally efficient and
+        supports cross-representation shape matching without large-scale
+        training or data-driven procedures. 3D shapes are represented as the
+        probability distribution induced by a continuous and invertible flow
+        mapping from a fixed anchor distribution. Given a source and a target
+        shape, the composition of the inverse flow (source to anchor) with
+        the forward flow (anchor to target), we continuously map points
+        between the two surfaces. By encoding the shapes with a pointwise
+        task-tailored embedding, this construction provides an invertible and
+        modality-agnostic representation of maps between shapes across point
+        clouds, meshes, signed distance fields (SDFs), and volumetric data.
+        The resulting representation consistently achieves high coverage and
+        accuracy across diverse benchmarks and challenging settings in shape
+        matching. Beyond shape matching, our framework shows promising
+        results in other tasks, including UV mapping and registration of raw
+        point cloud scans of human bodies.},
+      pdf = {https://arxiv.org/pdf/2511.13431},
+      html = {https://arxiv.org/abs/2511.13431},
       preview={fuse.png},
       selected={true},
 }
@@ -16,38 +51,43 @@
 }
 
 @article{vigano2025nam,
+  abbr = {SIGGRAPH},
   title = {NAM: Neural Adjoint Maps for Refining Shape Correspondences},
   author = {Viganò, Giulio and Ovsjanikov, Maks and Melzi, Simone},
   journal = {ACM Transactions on Graphics (TOG)},
   year = {2025},
-  url = {https://sites.google.com/view/gvigano/publications},
+  doi = {10.1145/3730943},
+  pdf = {https://www.lix.polytechnique.fr/~maks/papers/NAM_SIGGRAPH2025.pdf},
   preview={nam.png},
   selected={true},
 }
 
-@article{maccarone2024s4a,
+@inproceedings{maccarone2024s4a,
+  abbr = {STAG},
   title = {S4A: Scalable Spectral Statistical Shape Analysis},
-  author = {Maccarone, Francesca and Longari, Giorgio and Viganò, Giulio and Peruzzo, Davide and Maggioli, Filippo and Melzi, Simone},
-  journal = {Eurographics Italian Chapter Conference},
-  volume = {123},
-  pages = {103985},
+  author = {Maccarone, Francesca and Longari, Giorgio and Viganò, Giulio and Peruzzo, Denis and Maggioli, Filippo and Melzi, Simone},
+  booktitle = {Smart Tools and Applications in Graphics - Eurographics Italian Chapter Conference},
   year = {2024},
-  doi = {10.1016/j.cag.2024.103985},
+  doi = {10.2312/stag.20241343},
   preview={teaser_S4A.png}
 
 }
 
-@inproceedings{vigano2024bijective,
+@article{vigano2024bijective,
+  abbr = {Computers and Graphics},
   title = {Bijective Upsampling and Learned Embedding for Point Clouds Correspondences},
   author = {Viganò, Giulio and Melzi, Simone},
-  booktitle = {Computers \& Graphics},
-  pages = {37--46},
+  journal = {Computers and Graphics},
+  volume = {122},
+  pages = {103985},
   year = {2024},
-  doi = {10.2312/stag.20241343},
+  doi = {10.1016/j.cag.2024.103985},
+  html = {https://www.sciencedirect.com/science/article/pii/S0097849324001201},
   preview={bule.png},
 }
 
 @inproceedings{vigano2023adjoint,
+  abbr = {STAG},
   title = {Adjoint Bijective ZoomOut: Efficient Upsampling for Learned Linearly-Invariant Embedding},
   author = {Viganò, Giulio and Melzi, Simone},
   booktitle = {Eurographics Italian Chapter Conference},
